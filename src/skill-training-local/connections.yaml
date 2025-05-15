@@ -1,0 +1,20 @@
+# Connections yaml files defines connections to be created in the setup airflow, make sure for sensitive information 
+# like password, keyfile_path, private_key_file, etc. should be stored in the cred folder and be mounted in the airflow container during the run time. 
+# DO NOT store secrets/passwords in the connections.yaml file.
+google_cloud_default:
+  conn_id: google_cloud_default
+  conn_type: google_cloud_platform
+  extra: >
+    {
+      "project_id": "clgx-refdatapipe-app-dev-f12e",
+      "keyfile_path": "/opt/airflow/cred/clgx-gcp.json",
+      "num_retries": 5
+    }
+  
+fs_default:
+  conn_id: fs_default
+  conn_type: fs
+  extra: >
+    {
+      "path": "/"    
+    }
